@@ -20,8 +20,9 @@ total=zeros(dataCount,1);	% total assets
 realAction=zeros(dataCount,1);	% real actions
 total(1)=capital;
 for i=1:dataCount
-	[suggestedAction(i), ratio(i)]=myStrategy01(adjClose(1:i-1), N, U, D);	% Suggested action
-	currPrice=adjClose(i);	% Today's price
+	%[suggestedAction(i), ratio(i)]=myStrategy01(adjClose(1:i-1), N, U, D);	% Suggested action
+    [suggestedAction(i), ratio(i)]=myStrategy02(adjClose(1:i-1));	% Suggested action
+    currPrice=adjClose(i);	% Today's price
 	if i>1, unit(i)=unit(i-1); end		% Initial holding from yesterday
 	switch suggestedAction(i)
 		case 1	% "buy"
